@@ -1,5 +1,5 @@
 import React from 'react';
-import Copyright from './components/Copyright';
+import Copyright from './components/Copyright/Copyright';
 
 function App() {
   return (

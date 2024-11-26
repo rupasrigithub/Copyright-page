@@ -1,8 +1,6 @@
-'use client'
-
 import React, { useState, useEffect } from 'react';
 import { Clock } from 'lucide-react';
-import Header from './Header';
+
 import {
   Container,
   BreadcrumbNav,
@@ -25,13 +23,14 @@ import {
   Footer,
   CurrentAffairs,
   AdBanner
-} from '../styles/Copyright.styled';
+} from './Copyright.styled';
 
 const advertisements = [
   {
     id: 1,
     image: '/img1.png',
-    link: '#'
+    link: '#',
+    alt: 'Advertisement 1'
   },
   {
     id: 2,
@@ -44,31 +43,35 @@ const advertisements = [
   {
     id: 3,
     image: '/img3.png',
-    link: '#'
+    link: '#',
+    alt: 'Advertisement 3'
   },
   {
     id: 4,
     image: '/img3.png',
-    link: '#'
+    link: '#',
+    alt: 'Advertisement 4'
   },
   {
     id: 5,
     image: '/img4.png',
-    link: '#'
+    link: '#',
+    alt: 'Advertisement 5'
   },
   {
     id: 6,
     image: '/img5.png',
-    link: '#'
+    link: '#',
+    alt: 'Advertisement 6'
   }
 ];
 
 const sidebarAds = [
-  { id: 1, image: '/img6.jpg', link: '#' },
-  { id: 2, image: '/img7.jpg', link: '#' },
-  { id: 3, image: '/img8.jpg', link: '#' },
-  { id: 4, image: '/img9.jpg', link: '#' },
-  { id: 5, image: '/img10.jpg', link: '#' }
+  { id: 1, image: '/img6.jpg', link: '#', alt: 'Sidebar Advertisement 1' },
+  { id: 2, image: '/img7.jpg', link: '#', alt: 'Sidebar Advertisement 2' },
+  { id: 3, image: '/img8.jpg', link: '#', alt: 'Sidebar Advertisement 3' },
+  { id: 4, image: '/img9.jpg', link: '#', alt: 'Sidebar Advertisement 4' },
+  { id: 5, image: '/img10.jpg', link: '#', alt: 'Sidebar Advertisement 5' }
 ];
 
 const Copyright = () => {
@@ -78,11 +81,11 @@ const Copyright = () => {
   useEffect(() => {
     const mainAdTimer = setInterval(() => {
       setCurrentAd((prevAd) => (prevAd + 1) % advertisements.length);
-    }, 5000); // Change main ad every 5 seconds
+    }, 5000);
 
     const sidebarAdTimer = setInterval(() => {
       setCurrentSidebarAd((prevAd) => (prevAd + 1) % sidebarAds.length);
-    }, 5000); // Change sidebar ad every 5 seconds
+    }, 5000);
 
     return () => {
       clearInterval(mainAdTimer);
@@ -112,7 +115,7 @@ const Copyright = () => {
       <a href={ad.link}>
         <img 
           src={ad.image} 
-          alt={ad.alt || "Advertisement"}
+          alt={ad.alt}
           style={{ width: '100%', height: 'auto', display: 'block' }}
         />
       </a>
@@ -121,11 +124,13 @@ const Copyright = () => {
 
   return (
     <>
-      <Header />
+      
       <Container>
-        <BreadcrumbNav>
-          <a href="/">Home</a> » Copyright
-        </BreadcrumbNav>
+        <nav aria-label="Breadcrumb">
+          <BreadcrumbNav>
+            <a href="/">Home</a> » Copyright
+          </BreadcrumbNav>
+        </nav>
 
         <Advertisement className="main-ad">
           <div className="ad-wrapper">
@@ -163,7 +168,7 @@ const Copyright = () => {
 
           <Sidebar>
             <CurrentAffairs>
-              <Clock className="w-6 h-6 text-[#4CAF50]" />
+              <Clock className="w-6 h-6 text-[#4CAF50]" aria-hidden="true" />
               <div>
                 <h2>Current Affairs</h2>
                 <p>Check out the latest current affairs questions and answers.</p>
@@ -174,7 +179,7 @@ const Copyright = () => {
               <a href={sidebarAds[currentSidebarAd].link}>
                 <img 
                   src={sidebarAds[currentSidebarAd].image}
-                  alt={`Advertisement ${currentSidebarAd + 1}`}
+                  alt={sidebarAds[currentSidebarAd].alt}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </a>
@@ -205,7 +210,8 @@ const Copyright = () => {
                 </CategorySection>
 
                 <CategorySection>
-                  <CategoryTitle>Programming</CategoryTitle>
+                
+<CategoryTitle>Programming</CategoryTitle>
                   <LinksList>
                     <LinkItem><a href="#">Python Programming</a></LinkItem>
                     <LinkItem><a href="#">C Programming</a></LinkItem>

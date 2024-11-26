@@ -22,8 +22,12 @@ export const BreadcrumbNav = styled.div`
 
 export const MainContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr;
   gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 300px;
+  }
 `;
 
 export const ContentCard = styled.div`
@@ -80,14 +84,22 @@ export const Advertisement = styled.div`
     width: 100%;
 
     h2 {
-      font-size: 32px;
+      font-size: 24px;
       margin-bottom: 20px;
       font-weight: bold;
+
+      @media (min-width: 768px) {
+        font-size: 32px;
+      }
     }
 
     p {
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 20px;
+
+      @media (min-width: 768px) {
+        font-size: 18px;
+      }
     }
 
     .ad-footer {
@@ -122,8 +134,15 @@ export const StartHereSection = styled.div`
   border-radius: 4px;
   padding: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const StartHereButton = styled.a`
@@ -133,6 +152,7 @@ export const StartHereButton = styled.a`
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block;
 
   &:hover {
     background: #218838;
@@ -192,8 +212,12 @@ export const SectionTitle = styled.h2`
 export const LinksContainer = styled.div`
   padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const CategorySection = styled.div``;
@@ -239,6 +263,7 @@ export const Footer = styled.footer`
   padding-top: 20px;
   border-top: 1px solid #ddd;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   color: #666;
 
@@ -277,8 +302,7 @@ export const CurrentAffairs = styled.div`
 export const AdBanner = styled.div`
   margin: 20px 0;
   img {
-    width: 100
-%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
   }
